@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-repeat: no-repeat;
+            background-image: url(https://4.bp.blogspot.com/-WniYG8iTJrw/WcvlwTfSR_I/AAAAAAAAAAQ/YVlFJ-Wnn8UOGciTQKxRQNZhRiWHmcfFACLcBGAs/w1200-h630-p-k-no-nu/maxresdefault.jpg);
+            background-size: cover;
+            height: 50vh;
+            background-position: top;
+            width: 100vw;
+        }
+
+        body {
+            margin-bottom: 50px;
+        }
+
+        .contenedor {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            width: 80%;
+            margin: auto auto 20px auto;
+            position: relative;
+            top: 0;
+            left: 0;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .info {
+            height: 200px;
+            width: 40%;
+            margin: auto;
+            position: relative;
+            top: -20px;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            background: white;
+            transition: transform 1s;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .info:hover {
+            transform: scale(1.05);
+        }
+
+        .reinfo {
+            margin: auto;
+        }
+
+        .reinfo>p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .reinfo>p:nth-child(1) {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .reinfo>p:nth-child(2) {
+            text-align: center;
+            font-size: 1.05rem;
+            padding-left: 10px;
+        }
+
+        .flecha {
+            background: #B22222;
+            height: 60px;
+            width: 60%;
+            margin-top: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 35px;
+            justify-content: center;
+        }
+
+        .triangulo_izq {
+            width: 0;
+            height: 0;
+            border-top: 30px solid transparent;
+            border-right: 70px solid white;
+            border-bottom: 30px solid transparent;
+            position: absolute;
+            right: -1px;
+        }
+
+        .ac1 {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+            width: 100&;
+        }
+
+        .ac1 img {
+            width: 60%
+        }
+
+        .pre {
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .pre>span {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .pre>p {
+            margin-bottom: 10px;
+        }
+
+        table span {
+            text-decoration: underline;
+        }
+
+        .a tr,
+        .a td,
+        .a th {
+            border: 1px solid grey;
+        }
+
+        .a td:nth-child(1) {
+            text-align: center;
+        }
+
+        .a td:nth-child(3) {
+            text-align: center;
+        }
+
+        .a td {
+            padding: 10px;
+        }
+
+        .c1 th {
+            background-color: #ADD8E6;
+        }
+
+        .c1 table {
+            background: #FFF0F5;
+        }
+
+        .c1 {
+            padding-bottom: 20px;
+        }
+
+        .cona {
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+
+        .cona img {
+            width: 42%;
+            margin-left: 10px;
+        }
+
+        .c2 table {
+            display: block;
+            margin: 20px auto;
+        }
+
+        .c2 td {
+            text-align: center;
+        }
+
+        .preguntas {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            margin: auto
+        }
+
+        .esena {
+            perspective: 600px;
+            width: 30%;
+            height: 250px;
+            margin: 20px 10px;
+        }
+
+        .tarjeta {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+
+        .front {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            backface-visibility: hidden;
+        }
+
+        .uno {
+            background-image: url(https://chec.unicafam.edu.co/wp-content/uploads/2015/05/pensamiento-flexible-1.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .dos {
+            background-image: url(https://images.ctfassets.net/p0qf7j048i0q/7s7XAseSdim7zv0jdTO3OQ/b3806342858c910fed02bacbfbe49d76/Header_Flexible_thinking_Activities_Understood.jpg?w=1000&h=750&fit=fill&fm=webp);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .tres {
+            background-image: url(https://feelthebrain.files.wordpress.com/2018/12/Elastic-Brain.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .back {
+            position: absolute;
+            height: 99.9%;
+            width: 100%;
+            transform: rotateY(180deg);
+            background: #FFFAF0;
+            overflow: hidden;
+            padding: 10px;
+            text-align: justify;
+        }
+
+        .esena span {
+            font-weight: 600;
+            text-align: center;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .esena:hover .tarjeta {
+            transform: rotateY(180deg);
+        }
+
+        @media screen and (max-width:950px) {
+            .reinfo p:nth-child(2) {
+                display: none;
+            }
+            .kls{
+                            top:-20px;
+            }
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .popup {
+            width: 220px;
+            background: #2CAAC5;
+            border-radius: 20px;
+            padding: 15px;
+            color:white;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px auto;
+            cursor:pointer;
+            z-index:0;
+            position: relative;
+            font-size: 1.5rem;
+        }
+        .set{
+            width: 500px;
+            background: #2A6E7D;
+            border-radius: 20px;
+            padding: 15px;
+            color:white;
+            font-weight: bold;
+            text-align: center;
+            font-size:2rem;
+            margin: 10px;
+            cursor:pointer;
+            z-index:0;
+            transform: scale(0.5);
+        }
+
+        .popup:hover {
+            background: rgba(255,0,0,0.8);
+        }
+
+        .popuptext {
+            background:white;
+            display:block;
+            width:80%;
+            height: 80vh;
+            visibility: hidden;
+            margin:auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 50px;
+            overflow: hidden;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            z-index: 50;
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .imagensuper{
+            width:100%;
+            height:100%;
+        }
+        .imagensuper img{
+            width:100%;
+            height:50%;  
+        }
+        .infor h3{
+            text-align: left;
+            margin: 10px auto;
+            font-size:1.2rem;
+        }
+        .infor{
+            width:90%;
+            margin:auto;
+            text-align: justify;
+        }
+        .hola{
+            filter:blur(5px);
+            z-index: 0;
+        }
+        .c3{
+            padding-bottom: 10px;
+        }
+        .kls{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+        .c4{
+            display:flex;
+            flex-direction:column;
+            padding-bottom:20px;
+            z-index: 0;
+        }
+        .c4 p{
+            margin: auto;
+            text-align: justify;
+        }
+        .c4 h3{
+            text-align:center;
+            background:#2CAAC5;
+            width: 200px;
+            margin:20px 60%;
+            border-radius: 50px;
+            font-weight: bold;
+            color:white;
+            padding: 2px;
+        }
+        .ultim{
+            width:90%;
+            margin:auto;
+        }
+        .ultim img{
+            float: left;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="juan">
+        <header></header>
+        <div class="info">
+            <img src="https://previews.123rf.com/images/pikepicture/pikepicture1710/pikepicture171000201/87928812-programador-man-vector-programador-profesional-cl%C3%A1sico-codificaci%C3%B3n-hombre-software-programmer-typin.jpg"
+                alt="">
+            <div class="reinfo">
+                <p>Yeswah Gonzalez Tapia</p>
+                <p>Estudiante de Decimo D que le gusta la programacion, jugar, y divertirse. Pero que a la vez vaga
+                    demasiado</p>
+            </div>
+        </div>
+        <div class="contenedor">
+            <div class="flecha">
+                <p>Semana 1</p>
+                <div class="triangulo_izq"></div>
+            </div>
+            <section class="c1">
+                <div class="ac1">
+                    <img src="https://www.somoshermanos.mx/wp-content/uploads/2020/09/tecnoligia.jpg" alt="">
+                    <div class="pre">
+                        <span>¿Qué actividades realizas en el cotidiano que fortalezca tu pensamiento
+                            crítico?</span>
+                        <p>Rta: Fortalezco el pensamiento critico por medio de la programacion y la logica que trae un
+                            codigo, principalmente la fortalezco cunado hago js</p>
+                        <span>¿Cuál es la relación entre el pensamiento crítico y la solución de problemas?</span>
+                        <p>La relacion entre estas es que por lo general o la forma en que deberian solucionarse los
+                            problemas es a partir del pensamiento critico, no podemos llegar a una solucion sin analizar
+                            el
+                            problema y aplicar una logica para resolver el problema </p>
+                        <span>¿Cuál es la relación entre el pensamiento crítico y la construcción de tu
+                            proyecto de vida?</span>
+                        <p>La relacion de estas es que por medio de un pensamiento critico acerca de mis gustos,
+                            preferencias, oportunidades, debilidades y fortalezas, elegir el mejor camino
+                            posible(desicion)
+                            que me permita alcanzar mis objetivos y mi felicidad</p>
+                    </div>
+                </div>
+                <div class="cona">
+                    <table class="a" width="58%">
+                        <th colspan="2">Actuar con pensamiento crítico
+                            podría <span>minimizar</span> estados de:</th>
+                        <th colspan="2">Actuar con pensamiento crítico
+                            podría <span>aumentar</span> estados de:</th>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Angustia</td>
+                            <td width="10%"></td>
+                            <td>Felicidad</td>
+                        </tr>
+                        <tr>
+                            <td width="10%"></td>
+                            <td>Tristeza</td>
+                            <td width="10%">x</td>
+                            <td>Bienestar</td>
+                        </tr>
+                        <tr>
+                            <td width="10%"></td>
+                            <td>Frustracion</td>
+                            <td width="10%">x</td>
+                            <td>Tranquilidad</td>
+                        </tr>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Miedo</td>
+                            <td width="10%"></td>
+                            <td>Armonia</td>
+                        </tr>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Irritabilidad</td>
+                            <td width="10%">x</td>
+                            <td>Reflexion Personal</td>
+                        </tr>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Agotamiento</td>
+                            <td width="10%">x</td>
+                            <td>Autoeficacia</td>
+                        </tr>
+                        <tr>
+                            <td width="10%"></td>
+                            <td>Indesicion</td>
+                            <td width="10%">x</td>
+                            <td>Autocontrol</td>
+                        </tr>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Presion</td>
+                            <td width="10%">x</td>
+                            <td>Motivacion</td>
+                        </tr>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Mal interpretacion</td>
+                            <td width="10%"></td>
+                            <td>Autoconfianza</td>
+                        </tr>
+                        <tr>
+                            <td width="10%">x</td>
+                            <td>Confrontacion</td>
+                            <td width="10%">x</td>
+                            <td>Autonomia</td>
+                        </tr>
+                    </table>
+                    <img class="img_1"
+                        src="https://crehana-blog.imgix.net/media/filer_public/fe/1c/fe1c9ed7-9ee5-48f3-bacd-0baff9310fb5/habilidades-pensamiento-critico.jpg?auto=format&q=50"
+                        alt="">
+                </div>
+            </section>
+        </div>
+        <div class="contenedor">
+            <div class="flecha">
+                <p>Semana 2</p>
+                <div class="triangulo_izq"></div>
+            </div>
+            <section class="c2">
+                <table width="40%">
+                    <th colspan="1">Reto</th>
+                    <th colspan="1">Resultado</th>
+                    <tr>
+                        <td width="50%">Palillos</td>
+                        <td><img width="50%"
+                                src="https://www.expertice-it.com/wp-content/uploads/2017/08/Fail-300x213.jpg" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Conectar 4 lineas</td>
+                        <td><img width="50%"
+                                src="https://www.expertice-it.com/wp-content/uploads/2017/08/Fail-300x213.jpg" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Colores</td>
+                        <td><img width="50%"
+                                src="https://www.risingstars-uk.com/media/Rising-Stars/Series%20Images/Achieve/Achieve-Logo.png"
+                                alt=""></td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Descubre la frase</td>
+                        <td><img width="50%"
+                                src="https://www.expertice-it.com/wp-content/uploads/2017/08/Fail-300x213.jpg" alt="">
+                        </td>
+                    </tr>
+                </table>
+                <div class="preguntas">
+                    <div class="esena">
+                        <div class="tarjeta">
+                            <div class="front uno">
+                            </div>
+                            <div class="back">
+                                <span>¿Cuáles son los problemas actuales que requieren de un pensamiento
+                                    flexible?</span>
+                                <p>Todas aquellas que involucren un tema tabu en nuestra sociedad, debido a que hoy en
+                                    dia
+                                    en que no se interfiere con la manifestacion de opinion todos pueden opinar y no
+                                    sensura
+                                    a nadie pese a lo que diga</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esena">
+                        <div class="tarjeta">
+                            <div class="front dos">
+                            </div>
+                            <div class="back">
+                                <span>¿Cuáles técnicas utilizas para fortalecer el pensamiento flexible?</span>
+                                <p>Considero que empezar a pensar acerca de aquellos temas que no te gustan y comenzar a
+                                    ver
+                                    el tema o investigar acerca de el, capaz al final te termina gustando, el punto es
+                                    buscar cosas que no te gusten y dar una opnion para fortalezar tu postura critica y
+                                    tu
+                                    pensamiento flexible</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esena">
+                        <div class="tarjeta">
+                            <div class="front tres">
+                            </div>
+                            <div class="back">
+                                <span>¿Consideras importante desarrollar el pensamiento flexible? SI __ NO __ ¿Por
+                                    qué?</span>
+                                <p>Considero que si es importante desarollar un pensamiento flexible, ya que no podemos
+                                    quedarnos siempre en los mismos temas y no adentros en nuevos mundos de pensamiento,
+                                    somos humanos, y por eso debemos estar en contante experimentacion que nos permita
+                                    evolucionar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="contenedor c3">
+        <div class="flecha">
+            <p>Semana 3</p>
+            <div class="triangulo_izq"></div>
+        </div>
+        <div class="popup" onclick="myFunction()">Abrir</div>
+        <div class="popuptext" id="myPopup">
+            <div class="imagensuper">
+                <img src="https://i.ibb.co/7y1Hdqq/pana-1.jpg" alt="">
+                <div class="infor">
+                    <h3>¿Cómo crees que lograron ser tan reconocidos?</h3>
+                    <p>Llegaron a ser conocidos a partir de su pensamiento diferente al de los demas, de pensar nuevas
+                        ideas, de proponer nuevos sistemas economicos, o fundamentar conceptos fisicos, o incluso descubrir
+                        nuevos elementos de la tabla periodica, todos los hizieron a partir de esfuerzo y de ver el mundo
+                        desde otras perspectivas sin quedarse conforme con lo que tenian.</p>
+                    <h3>¿Tendría algo que ver su pensamiento creativo?</h3>
+                    <p>Si, gracias a su pensamiento diferente del de los demas y su forma de ver el mundo lograron impactar
+                        a los demas planteando a los otros sus pensamientos. En pocas palabras la creatividad fue un factor
+                        fundamental, digamos quien huviera imaginado plantear un sistema socialista o experimentar con
+                        sustancias toxicas.</p>
+                    <div class="kls">
+                        <div class="set" onclick="myFunction()">Cerrar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenedor c4" id="c4">
+        <div class="flecha">
+            <p>Semana 4</p>
+            <div class="triangulo_izq"></div>
+        </div>
+        <div class="ultim">
+            <h3>Me persigue la muerte</h3>
+            <img src="https://m.media-amazon.com/images/I/71tMzk2AbpL._SS500_.jpg" alt="">
+            <p>Hola! soy Ernesto de la cruz y esos que me persiguen no es nada más ni nada menos que la muerte, y os preguntareis como la muerte a cabo persiguiendo, pues dejadme contaros.          </p>
+            <p>Soy de una pequeña villa extraterrestre donde la magia es común, pero por un defecto en mi unico corazon(en mi villa no es común nacer con un corazón porque es de mal augurio o porque significa que no tienes magia en tu interior), y pues como os imagináis no tengo magia y por eso se han burlado de mí siempre, sin embargo nunca me preocupe por eso porque mi tío Gandalf Trask me dijo que los poderes en personas de un solo corazón que logran conseguir magia son muchisimo mas fuertes que las personas normales, y a dia de hoy me sentía orgulloso de que hubiera esa posibilidad de convertirme en alguien poderosísimo. Pero, mientras llegaba el momento de mi adolescencia(donde se supone se manifiesten los poderes de personas con un solo corazón) practicaba todos los días o con Gandalf Trask o en solitario, no es como que hiciera magia pero conocía la teoría y sabía demasiados conjuntos que no necesitaban magia, y en ese aspecto les ganaba a todos mis compañeros de clase. Cuando.. finalmente llegó el día, mis poderes se manifestaron, pero no de la manera épica y mística que estaban pensando, fue algo mas bien bonito, nada épico, pero sí algo hermoso. Mi primer amor, un beso de ella me dio los poderes, al parecer ella tenia algun tipo de poder mágico desconocido que activaba los poderes de personas como yo, aparte de que cuando la conocí fue una persona bastante amable conmigo pese a no tener magia, fue algo especial, pero, el problema empezaría con eso. al parecer una leyenda decía que nacería un extraterrestre de un solo corazón que manifiesta sus poderes de forma extraña y mataría a la muerte. Y si, suena demasiado absurdo pero eso era lo que decían y la muerte no quería morir, entonces decidió explícitamente a matarme :D, supongo que esto es todo, la muerte ha llegado por mi, y solo puedo agradecer por los momentos sin magia y a mi familia que estuvo conmigo. Estas son mis últimas palabras para que la recuerde todo aquel que quiera tener magia y tenga un corazón, por favor cumple mi sueño y mata a la muerte. Se que tu lo lograras pero por si acaso. (La muerte lo mata y en mucho tiempo no se ve alguien así hasta que apareciste tú).</p>    
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            var juan = document.getElementById("juan");
+            var popup = document.getElementById("myPopup");
+            var c4 = document.getElementById("c4");
+            popup.classList.toggle("show");
+            juan.classList.toggle("hola");
+            c4.classList.toggle("hola");
+        }
+    </script>
+</body>
+
+</html>
